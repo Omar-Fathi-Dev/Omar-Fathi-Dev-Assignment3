@@ -43,8 +43,34 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        
+
+        #region Run Part B 
+
         //RunTypesDemo();
-        RunValueVsReferenceDemo();
+
+        #endregion
+        
+        #region Run Part C 
+
+        //RunValueVsReferenceDemo();
+
+        #endregion
+
+        #region Run Part D => D2
+
+        //CompoundAssignmentOperators();
+
+        #endregion
+        
+        #region Run Part D => D3
+
+        //DemonstrateBitwiseOperators();
+
+        #endregion
+        
+        
+
     }
 
     #region Part B — Variables, Types & Casting
@@ -277,6 +303,108 @@ internal class Program
     }
 
     #endregion
+
+    #region Part D — Scope & Operators
+
+
+    #region D1 — Scope
     
+    //Field scope
     
+    private int _number = 10;
+
+    void Method1()
+    {
+        Console.WriteLine($"Filed Number = {_number}");
+    }
+    void Method2()
+    {
+        Console.WriteLine($"Filed Number + 10 = {_number + 10}");
+    }
+    
+    //Method scope
+
+    void Method3()
+    {
+        int numberInMethod3 = 10;
+        Console.WriteLine($"Test method scope: {numberInMethod3}");
+    }
+
+    void Method4()
+    {
+        //Console.WriteLine($"Test method3 scope: {numberInMethod3}");
+        //This causes a compile error because numberInMethod3 is only accessible inside the Method3 block.
+    }
+    
+    // For loop scope 
+
+    void TryForScope()
+    {
+        for (int i = 0;i < 5; i++)
+        {
+            int currentIndex = i;
+        }
+
+        // int lastOndex = currentIndex;
+        // This causes a compile error because currentIndex is only accessible inside the loop block.
+        
+
+    }
+    
+    #endregion
+
+    #region D2 — Composite (compound assignment) operators
+
+    static void CompoundAssignmentOperators()
+    {
+        Console.WriteLine("============================================");
+        Console.WriteLine("Part D — Scope & Operators - D2");
+        Console.WriteLine("============================================");
+        int total = 100;
+        //total = total + 100;
+        Console.WriteLine($"total += 100 :  {total += 100}");
+        //total = total - 50;
+        Console.WriteLine($"total -= 50 :  {total -= 50}");
+        //total = total * 2;
+        Console.WriteLine($"total *= 2 :  {total *= 2}");
+        //total = total / 2;
+        Console.WriteLine($"total /= 2 :  {total /= 2}");
+        //total = total % 10;
+        Console.WriteLine($"total %= 10 :  {total %= 10}");
+        
+        
+        
+        
+    }
+
+    #endregion
+
+    #region D3 — Bitwise operators (not logical operators)
+
+    static void DemonstrateBitwiseOperators()
+    {
+        Console.WriteLine("============================================");
+        Console.WriteLine("Part D — Scope & Operators - D3");
+        Console.WriteLine("============================================");
+        
+        int a = 12;
+        int b = 10;
+        //1100 & 1010 = 1000 (8)
+        Console.WriteLine($"a & b  = {a & b}");
+        //1100 | 1010 = 1110 (14)
+        Console.WriteLine($"a | b  = {a | b}");
+        //1100 ^ 1010 = 0110 (6)
+        Console.WriteLine($"a ^ b  = {a ^ b}");
+        
+        // &: checks both operands, but &&: if the left operand is false, it does not check the right operand.
+
+
+        
+    }
+
+    #endregion
+
+    #endregion
+
+
 }
