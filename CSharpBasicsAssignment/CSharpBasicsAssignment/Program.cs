@@ -68,7 +68,15 @@ internal class Program
         //DemonstrateBitwiseOperators();
 
         #endregion
+
+        #region Run Part F
+
+        //Console.WriteLine($"[4,1,2,1,2]: {FindSingleNumber(new []{4,1,2,1,2})}");
+        //Console.WriteLine($"[2,2,1]: {FindSingleNumber(new []{2,2,1})}");
+
         
+
+        #endregion
         
 
     }
@@ -405,6 +413,29 @@ internal class Program
     #endregion
 
     #endregion
+
+    #region Part F — LeetCode Problem
+
+    static int FindSingleNumber(int[] nums)
+    {
+        Console.WriteLine("============================================");
+        Console.WriteLine("Part F — LeetCode Problem");
+        Console.WriteLine("============================================");
+        int length = nums.Length;
+        int oddNumber=0;
+        for (int i = 0; i < length; i++)
+            oddNumber ^= nums[i];
+        
+        return oddNumber;
+        
+        
+        // XOR-ing every number together leaves only the number that appears an odd number of times,
+        // because XOR-ing two identical numbers results in 0.
+    }
+
+    #endregion
+    
+    
     
     
 
