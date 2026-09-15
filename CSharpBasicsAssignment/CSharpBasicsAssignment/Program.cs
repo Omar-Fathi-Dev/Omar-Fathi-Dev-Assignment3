@@ -43,7 +43,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        RunTypesDemo();
+        //RunTypesDemo();
+        RunValueVsReferenceDemo();
     }
 
     #region Part B — Variables, Types & Casting
@@ -191,6 +192,84 @@ internal class Program
         
         #endregion
 
+
+
+
+
+    }
+
+    #endregion
+
+    #region Part C — Value vs. Reference Types 
+    
+    struct Point { public int X; public int Y; }
+    
+    static void RunValueVsReferenceDemo()
+    {
+        Console.WriteLine("============================================");
+        Console.WriteLine("Part C — Value vs. Reference Types ");
+        Console.WriteLine("============================================");
+
+        #region Experiment 1 — struct copy semantics
+
+        Console.WriteLine("Experiment 1 — struct copy semantics");
+        Console.WriteLine("---------------------------------------------");
+        
+        Point p1 = new Point { X = 1, Y = 2 };
+        Point p2 = p1;
+        p2.X = 99;
+        Console.WriteLine($"p1.X = {p1.X}");
+        Console.WriteLine($"p2.X = {p2.X}");
+        // Point is a struct so it is a value-type and When we copy p1 to p2, p2 gets just a copy of the value . 
+
+        Console.WriteLine("---------------------------------------------");
+        
+        #endregion
+
+        #region Experiment 2 — class reference semantics (Order class)
+        
+        Console.WriteLine("Experiment 2 — class reference semantics (Order class)");
+        Console.WriteLine("---------------------------------------------");
+        
+        Order o1 = new Order
+        {
+            _orderId = 1,
+            _customerName = "Omar",
+            _quantity = 5,
+            _unitPrice = 250.50m,
+            _totalPrice = 1252.50m,
+            _isPaid = false,
+            _discountPercent = 10.0,
+            _shippingCity = "Cairo",
+            _priority = 'H',
+            _itemCode = 9876543210L
+        };
+
+        o1.CalculateTotal();
+        Order o2 = o1;
+        o2._isPaid = true;
+        
+        Console.WriteLine($"o1.Ispaid = {o1._isPaid}");
+        Console.WriteLine($"o2.Ispaid = {o2._isPaid}");
+        
+        // class Order is a reference type , when we copy reference o1 to reference o2 we copy the address that refer to the oblect in Heap.
+        Console.WriteLine("----");
+        Console.WriteLine("Work with object:");
+        object boxedOrder = o1;
+        Order o3 = (Order)boxedOrder;
+        Console.WriteLine($"object.ReferenceEquals(o1,o3) : {object.ReferenceEquals(o1,o3)}");
+        Console.WriteLine("----");
+        o2.PrintSummary();
+        
+        // value data type lives in stack and reference data type its address lives in stack and its actual data in heap.
+        // assignment in value tpye copies actual value ,and assignment in reference type copies the address.
+        //storing a reference type inside an object variable does not create a new object : Both variables still refer to the same object in the heap.
+        
+        Console.WriteLine("---------------------------------------------");
+        
+        
+
+        #endregion
 
 
 
